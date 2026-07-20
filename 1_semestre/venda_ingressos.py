@@ -2,7 +2,7 @@ import os
 
 Nomes =[] 
 Cpfs = []
-Ingressos = []
+Ingressos_vend = []
 Vendas = []
 
 inteira = 40
@@ -26,40 +26,54 @@ while True:
     print('========================================')
     op = int(input('>: '))
     if op == 1:
+        Compras = []
+        Ingressos = []
         limpar_tela()
         print('========= VENDER  INGRESSOS ==========')
         print(f'|          INGRESSOS DISPONIVEIS: {ingressos} |')
         nome = input('| NOME: ')
         cpf = int(input('| CPF: '))
-        quant = int(input('| QUANTIDADE DE INGRESSOS: '))
-        if quant < 0 or quant > ingressos:
-            print('| QUANTIDADE FORA DO LIMITE! COMPRA NÃO REGISTRADA ')
-            print(f'| {ingressos} DISPONÍVEIS - CADASTRE A VENDA NOVAMENTE.')
-            pausar()          
-        else:
-            print('====== VALORES DA SESSÃO =======')
-            print(f'| [1] - VENDER INTEIRA: R${inteira}  |'),
-            print(f'| [2] - VENDER MEIA: R${meia}    |')
-            print(f'| [3] - GRATUIDADE\n')
-            op = int(input('QUAL TIPO DE VENDA?: \n'))
-            if op == 1:
-                calculo = op * inteira
-                Vendas.append(calculo)
-                print(f'COMPRA DE R${calculo} CONFIRMADA!')                            
-            elif op == 2:
-                calculo = quant * meia
-                Vendas.append(calculo)
-                print(f'COMPRA DE R${calculo} CONFIRMADA!') 
-            elif op == 3:
-                Vendas.append(0)
-                print('COMPRA GRATUIDADE CONFIRMADA!')        
-            ingressos = ingressos - quant
-            Nomes.append(nome)
-            Cpfs.append(cpf)
-            Ingressos.append(quant)
-            print(f'VENDA PARA {nome} REGISTRADA COM SUCESSO!')
-            print(f'RESUMO: {quant} INGRESSOS - TOTAL R${calculo}\n')
-            pausar()
+        while True:
+            quant = int(input('| QUANTIDADE DE INGRESSOS: '))
+            if quant < 0 or quant > ingressos:
+                print('| QUANTIDADE FORA DO LIMITE! COMPRA NÃO REGISTRADA ')
+                print(f'| {ingressos} DISPONÍVEIS - CADASTRE A VENDA NOVAMENTE.')
+                pausar()          
+            else:
+                print('====== VALORES DA SESSÃO =======')
+                print(f'| [1] - VENDER INTEIRA: R${inteira}  |'),
+                print(f'| [2] - VENDER MEIA: R${meia}    |')
+                print(f'| [3] - GRATUIDADE\n')
+                op = int(input('QUAL TIPO DE VENDA?: \n'))
+                if op == 1:
+                    calculo = op * inteira
+                    Compras.append(calculo)
+                    print(f'COMPRA DE R${calculo} CONFIRMADA!')
+                    print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')                           
+                elif op == 2:
+                    calculo = quant * meia
+                    Compras.append(calculo)
+                    print(f'COMPRA DE R${calculo} CONFIRMADA!') 
+                    print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')  
+                elif op == 3:
+                    Vendas.append(0)
+                    print('COMPRA GRATUIDADE CONFIRMADA!')   
+                    print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')  
+                comprar_mais = int(input('[1] - PARA VENDER MAIS // [0] - PARA FINALIZAR: > '))
+                if comprar_mais == 0:
+                    ingressos = ingressos - quant
+                    Nomes.append(nome)
+                    Cpfs.append(cpf)
+                    Ingressos.append(quant)
+                    print(f'VENDA PARA {nome} REGISTRADA COM SUCESSO!')
+                    print(f'RESUMO: {quant} INGRESSOS - TOTAL R${calculo}\n')
+                    pausar()
+                    break
+                elif comprar_mais == 1:
+                    pausar()
+
+                else:
+                    print('OPÇÃO INVÁLIDA!!')
 
     elif op == 2:
         limpar_tela()
