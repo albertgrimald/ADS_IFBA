@@ -33,40 +33,54 @@ while True:
         print(f'|          INGRESSOS DISPONIVEIS: {ingressos} |')
         nome = input('| NOME: ')
         cpf = int(input('| CPF: '))
+        print('=======================================')
         while True:
-            quant = int(input('| QUANTIDADE DE INGRESSOS: '))
+            quant = int(input('\n| QUANTIDADE DE INGRESSOS: > '))
             if quant < 0 or quant > ingressos:
                 print('| QUANTIDADE FORA DO LIMITE! COMPRA NÃO REGISTRADA ')
                 print(f'| {ingressos} DISPONÍVEIS - CADASTRE A VENDA NOVAMENTE.')
                 pausar()          
             else:
-                print('====== VALORES DA SESSÃO =======')
+                print('\n====== VALORES DA SESSÃO =======')
                 print(f'| [1] - VENDER INTEIRA: R${inteira}  |'),
                 print(f'| [2] - VENDER MEIA: R${meia}    |')
-                print(f'| [3] - GRATUIDADE\n')
-                op = int(input('QUAL TIPO DE VENDA?: \n'))
+                print(f'| [3] - GRATUIDADE')
+                print('=================================\n')
+                op = int(input('QUAL TIPO DE VENDA?: > '))
                 if op == 1:
-                    calculo = op * inteira
+                    print('\n============================')
+                    calculo = quant * inteira
                     Compras.append(calculo)
+                    Ingressos.append(quant)
                     print(f'COMPRA DE R${calculo} CONFIRMADA!')
-                    print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')                           
+                    print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')      
+                    print('============================')                     
                 elif op == 2:
+                    print('\n============================')
                     calculo = quant * meia
                     Compras.append(calculo)
+                    Ingressos.append(quant)
                     print(f'COMPRA DE R${calculo} CONFIRMADA!') 
                     print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')  
+                    print('============================\n')
                 elif op == 3:
-                    Vendas.append(0)
+                    print('\n============================')
+                    Ingressos.append(quant)
                     print('COMPRA GRATUIDADE CONFIRMADA!')   
                     print(f'TOTAL ATÉ O MOMENTO: R${sum(Compras)}')  
-                comprar_mais = int(input('[1] - PARA VENDER MAIS // [0] - PARA FINALIZAR: > '))
+                    print('============================\n')
+                comprar_mais = int(input('\n[1] - PARA VENDER MAIS // [0] - PARA FINALIZAR: > '))
+                limpar_tela()
                 if comprar_mais == 0:
-                    ingressos = ingressos - quant
+                    ingressos = ingressos - sum(Ingressos)
                     Nomes.append(nome)
                     Cpfs.append(cpf)
-                    Ingressos.append(quant)
-                    print(f'VENDA PARA {nome} REGISTRADA COM SUCESSO!')
-                    print(f'RESUMO: {quant} INGRESSOS - TOTAL R${calculo}\n')
+                    Ingressos_vend.append(sum(Ingressos))
+                    Vendas.append(sum(Compras))
+                    print('============== RESUMO DA COMPRA ===============')
+                    print(f'\nVENDA PARA {nome} REGISTRADA COM SUCESSO!')
+                    print(f'RESUMO: {sum(Ingressos)} INGRESSOS - TOTAL R${sum(Compras)}')
+                    print('================================================\n')
                     pausar()
                     break
                 elif comprar_mais == 1:
@@ -85,7 +99,7 @@ while True:
             for i in range(len(Cpfs)):
                 print(f'NOME: {Nomes[i]}')
                 print(f'CPF: {Cpfs[i]}')
-                print(f'Quantidade de ingressos comprados: {Ingressos[i]}')
+                print(f'Quantidade de ingressos comprados: {Ingressos_vend[i]}')
                 print(f'VALOR TOTAL DA COMPRA: R${Vendas[i]}')
                 print('=======================')
             pausar()
