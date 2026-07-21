@@ -1,3 +1,15 @@
+''' ATIVIDADE PROPOSTA:
+Fazer um código para um sistema de vendas de ingresso.
+Requisitos:
+O sistema só tem 500 ingressos disponíveis
+É preciso fazer o cadastro do comprador lendo Nome e CPF
+Só é possível vender se houver a quantidade que o cliente deseja comprar.
+É preciso mostrar na tela do menu, quantos ingressos estão disponíveis para venda.
+O sistema precisa ter apenas as opções:
+1. Vender ingresso
+2. Exibir vendas
+0. Sair '''
+
 import os
 
 Nomes =[] 
