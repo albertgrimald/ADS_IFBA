@@ -10,24 +10,35 @@ O sistema precisa ter apenas as opções:
 2. Exibir vendas
 0. Sair '''
 
-import os
+''' MEUS COMENTÁRIOS:
+COMO TODA A ATIVIDADE EU SEMPRE BUSCO REALIZAR A PROPOSTA, E IMPLEMENTAR MAIS ALGUMAS FUNÇÕES DENTRO SISTEMA
+ME FAZENDO CADA VEZ APRENDER E ME FORÇAR A USAR MINHA CRIATIVIDADE.
+A PROPOSTA FOI SIMPLES E OBJETIVA DE CRIAÇÃO DE UM MENU, COM VENDA E EXIBIÇÃO.
+EU TENTEI IR ALÉM ADICIONANDO: [FUNÇÕES DE ADM (MUDANÇA DE SENHA, MUDANÇA DE VALOR DE INGRESSO, RESUMO DE COMPRA MAIS DETALHADO)]
+E VOU SEGUINDO ATUALIZANDO CADA VEZ DA MELHOR MANEIRA POSSÍVEL, ATÉ  RECEBER UMA NOVA ATIVIDADE PARA DESENVOLVER...
+'''
 
+import os
+#LISTAS
 Nomes =[] 
 Cpfs = []
 Ingressos_vend = []
 Vendas = []
 
+#CONDICIONAIS
 inteira = 40
 meia = (inteira / 2)
 ingressos = 500
 senha_adm = 'brasilhexa'
 
+#FUNCOES
 def limpar_tela():
     os.system('cls')
 
 def pausar():
     input('PRESSIONE [ENTER] PARA CONTINUAR...')
 
+# MENU PRINCIPAL
 while True:
     limpar_tela()
     print('========== VENDAS DE INGRESSOS =========')
