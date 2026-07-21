@@ -18,7 +18,7 @@ Ingressos_vend = []
 Vendas = []
 
 inteira = 40
-meia = inteira / 2
+meia = (inteira / 2)
 ingressos = 500
 senha_adm = 'brasilhexa'
 
@@ -134,7 +134,7 @@ while True:
                 limpar_tela()
                 print('====== VALORES DA SESSÃO =======')
                 print(f'| VALOR INTEIRA: R${inteira}  |'),
-                print(f'| VALOR MEIA: R${meia}  |')
+                print(f'| VALOR MEIA: R${meia}   |')
                 print('==================================\n')
                 print('DESEJA FAZER ALTERAÇÃO NO VALOR DA INTEIRA?')
                 op = input('s/n: ')
@@ -142,7 +142,9 @@ while True:
                     print('OK, VALORES MANTIDOS! ')
                     pausar()
                 elif op == 's':
-                    inteira = int(input('NOVO VALOR DA INTEIRA R$:'))
+                    novo_valor = int(input('NOVO VALOR DA INTEIRA R$:'))
+                    inteira = novo_valor
+                    meia = inteira / 2
                     print(f'VALOR DA INTEIRA ATUALIZADO PARA R${inteira}')
                     pausar()
             elif op == 2:
@@ -161,12 +163,6 @@ while True:
                             pausar()
                             senha_adm = nova_senha
                             break
-
-
-
-
-
-            
 
     elif op == 0:
         print('Saindo do sistema, até logo!')
