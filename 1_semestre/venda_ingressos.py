@@ -139,6 +139,7 @@ while True:
             print('========== AREA DO ADM ===========')
             print(' [1] - ALTERAR VALORES DA SESSÃO |')
             print(' [2] - ALTERAR SENHA DO ADM      |')
+            print(' [3] - PESQUISA DE VENDA DET.    |')
             print(' [0] - VOLTAR AO MENU            |')
             print('==================================\n')
             op = int(input('ESCOLHA UMA OPÇÃO: > '))
@@ -175,7 +176,12 @@ while True:
                             pausar()
                             senha_adm = nova_senha
                             break
-
+            elif op == 3:
+                print('EM MANUTENÇÃO!!')
+                pausar()
+            else:
+                print('OPÇÃO INVÁLIDA! ESCOLHA UMA OPÇÃO VÁLIDA.')
+                pausar()
     elif op == 0:
         print('Saindo do sistema, até logo!')
         break
