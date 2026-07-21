@@ -33,7 +33,7 @@ while True:
     print('========== VENDAS DE INGRESSOS =========')
     print('| [1] - VENDER INGRESSOS               |')
     print('| [2] - EXIBIR TODAS AS VENDAS         |')
-    print('| [3] - ALTERAR VALOR DA SESSÃO        |')
+    print('| [3] - AREA DO ADM                    |')
     print('| [0] - SAIR                           |')
     print('========================================')
     op = int(input('>: '))
@@ -115,6 +115,8 @@ while True:
                 print(f'VALOR TOTAL DA COMPRA: R${Vendas[i]}')
                 print('=======================')
             pausar()
+
+
     elif op == 3:
         senha = input('DIGITE A SENHA DO ADM: ')
         if senha != senha_adm:
@@ -122,19 +124,49 @@ while True:
             pausar()
         else:
             limpar_tela()
-            print('====== VALORES DA SESSÃO =======')
-            print(f'| VALOR INTEIRA: R${inteira}  |'),
-            print(f'| VALOR MEIA: R${meia}  |\n')
-            print('DESEJA FAZER ALTERAÇÃO NO VALOR DA INTEIRA?')
-            op = input('s/n: ')
-            if op == 'n':
-                print('OK, VALORES MANTIDOS! ')
-                pausar()
-            elif op == 's':
-                inteira = int(input('NOVO VALOR DA INTEIRA R$:'))
-                print(f'VALOR DA INTEIRA ATUALIZADO PARA R${inteira}')
-                pausar()
+            print('========== AREA DO ADM ===========')
+            print(' [1] - ALTERAR VALORES DA SESSÃO |')
+            print(' [2] - ALTERAR SENHA DO ADM      |')
+            print(' [0] - VOLTAR AO MENU            |')
+            print('==================================\n')
+            op = int(input('ESCOLHA UMA OPÇÃO: > '))
+            if op == 1:
+                limpar_tela()
+                print('====== VALORES DA SESSÃO =======')
+                print(f'| VALOR INTEIRA: R${inteira}  |'),
+                print(f'| VALOR MEIA: R${meia}  |')
+                print('==================================\n')
+                print('DESEJA FAZER ALTERAÇÃO NO VALOR DA INTEIRA?')
+                op = input('s/n: ')
+                if op == 'n':
+                    print('OK, VALORES MANTIDOS! ')
+                    pausar()
+                elif op == 's':
+                    inteira = int(input('NOVO VALOR DA INTEIRA R$:'))
+                    print(f'VALOR DA INTEIRA ATUALIZADO PARA R${inteira}')
+                    pausar()
+            elif op == 2:
+                while True:
+                    print('======== ALTERAR SENHA ==========\n')
+                    atual = input('DIGITE A SENHA ATUAL: ')
+                    if atual != senha_adm:
+                        print('SENHA INCORRETA! TENTE NOVAMETE')
+                    else:
+                        nova_senha = input('DIGITE A NOVA SENHA: ')
+                        confirme_senha = input('CONFRIME A SENHA: ')
+                        if confirme_senha != nova_senha:
+                            print('AS SENHAS NÃO COINCIDEM!')
+                        else:
+                            print('SENHA ALTERADA COM SUCESSO! RETORNANDO AO MENU.')
+                            pausar()
+                            senha_adm = nova_senha
+                            break
 
+
+
+
+
+            
 
     elif op == 0:
         print('Saindo do sistema, até logo!')
