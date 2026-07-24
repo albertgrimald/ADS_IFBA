@@ -41,13 +41,26 @@ def limpar_tela():
 def pausar():
     input('PRESSIONE [ENTER] PARA CONTINUAR...')
 
+def pesquisar_cliente(cpf):
+    if cpf in Cpfs:
+        pos = Cpfs.index(cpf)
+        print((f'Nome: {Nomes[pos]}'))
+        print((f'CPF: {Cpfs[pos]}'))
+        print((f'Ingressos Comprados: {Ingressos_vend[pos]}'))
+        print((f'Valor: R${Vendas[pos]}'))
+        return pos
+
+    else:
+        print('CLIENTE NÃO ENCONTRADO! ')
+
 # MENU PRINCIPAL
 while True:
     limpar_tela()
     print('========== VENDAS DE INGRESSOS =========')
     print('| [1] - VENDER INGRESSOS               |')
     print('| [2] - EXIBIR TODAS AS VENDAS         |')
-    print('| [3] - AREA DO ADM                    |')
+    print('| [3] - PESQUISAR CLIENTE              |')
+    print('| [4] - AREA DO ADM                    |')
     print('| [0] - SAIR                           |')
     print('========================================')
     op = int(input('>: '))
@@ -130,8 +143,14 @@ while True:
                 print('=======================')
             pausar()
 
-
     elif op == 3:
+        limpar_tela()
+        print('==== PESQUISAR CLIENTE ====')
+        cpf = input('CPF DO CLIENTE: ')
+        pesquisar_cliente(cpf)
+        pausar()
+
+    elif op == 4:
         senha = input('DIGITE A SENHA DO ADM: ')
         if senha != senha_adm:
             print('ACESSO NEGADO! SENHA INCORRETA')
